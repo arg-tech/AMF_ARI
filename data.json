@@ -1,0 +1,821 @@
+{
+  "AIF": {
+    "nodes": [
+      {
+        "nodeID": "2_166178046893607143",
+        "text": "Dungeons and Dragons and its imitators are right out of the pit of hell",
+        "type": "I"
+      },
+      {
+        "nodeID": "3_166178046893607143",
+        "text": "No Christian or sane, decent individual of whatever faith really should have anything to do with Dungeons and Dragons and its imitators",
+        "type": "I"
+      },
+      {
+        "nodeID": "6_166178046893607143",
+        "text": "It's just a game!",
+        "type": "I"
+      },
+      {
+        "nodeID": "7_166178046893607143",
+        "text": "the person who thinks they can mess with Dungeons and Dragons without getting burnt is whistling in the dark",
+        "type": "I"
+      },
+      {
+        "nodeID": "8_166178046893607143",
+        "text": "people who think they can play around with crack or pre-marital sex and not get burned by death, AIDS or pregnancy are whistling in the dark",
+        "type": "I"
+      },
+      {
+        "nodeID": "13_166178046893607143",
+        "text": "Dungeons and Dragons is essentially a feeding program for occultism and witchcraft",
+        "type": "I"
+      },
+      {
+        "nodeID": "16_166178046893607143",
+        "text": "Dungeons and Dragons violates the commandment of I Ths. 5:22 \"Abstain from all appearance of evil.\"",
+        "type": "I"
+      },
+      {
+        "nodeID": "19_166178046893607143",
+        "text": "Much of the art, figurines, and writing within Dungeons and Dragons certainly appears evil to say the least of it",
+        "type": "I"
+      },
+      {
+        "nodeID": "22_166178046893607143",
+        "text": "the materials themselves contain magical rituals",
+        "type": "I"
+      },
+      {
+        "nodeID": "25_166178046893607143",
+        "text": "for the most part, the rituals are certainly authentic",
+        "type": "I"
+      },
+      {
+        "nodeID": "34_166178046893607143",
+        "text": "If a person \"innocently\" works an authentic ritual that conjures up a demon, or curses someone, thinking that they are only playing a game, the ritual will still have efficacy",
+        "type": "I"
+      },
+      {
+        "nodeID": "37_166178046893607143",
+        "text": "If you play at shooting your friend in the head with what you think is an unloaded pistol and don't know a shell is in the chamber, your friend is not any less dead because you were playing",
+        "type": "I"
+      }
+    ],
+    "edges": [
+    ],
+    "schemefulfillments": [
+      {
+        "nodeID": "2_166178046893607143",
+        "schemeID": "0"
+      },
+      {
+        "nodeID": "3_166178046893607143",
+        "schemeID": "0"
+      },
+      {
+        "nodeID": "5_166178046893607143",
+        "schemeID": "237"
+      },
+      {
+        "nodeID": "6_166178046893607143",
+        "schemeID": "0"
+      },
+      {
+        "nodeID": "7_166178046893607143",
+        "schemeID": "0"
+      },
+      {
+        "nodeID": "8_166178046893607143",
+        "schemeID": "0"
+      },
+      {
+        "nodeID": "10_166178046893607143",
+        "schemeID": "1"
+      },
+      {
+        "nodeID": "12_166178046893607143",
+        "schemeID": "71"
+      },
+      {
+        "nodeID": "13_166178046893607143",
+        "schemeID": "0"
+      },
+      {
+        "nodeID": "15_166178046893607143",
+        "schemeID": "31"
+      },
+      {
+        "nodeID": "16_166178046893607143",
+        "schemeID": "0"
+      },
+      {
+        "nodeID": "18_166178046893607143",
+        "schemeID": "30"
+      },
+      {
+        "nodeID": "19_166178046893607143",
+        "schemeID": "0"
+      },
+      {
+        "nodeID": "21_166178046893607143",
+        "schemeID": "30"
+      },
+      {
+        "nodeID": "22_166178046893607143",
+        "schemeID": "0"
+      },
+      {
+        "nodeID": "24_166178046893607143",
+        "schemeID": "30"
+      },
+      {
+        "nodeID": "25_166178046893607143",
+        "schemeID": "0"
+      },
+      {
+        "nodeID": "27_166178046893607143",
+        "schemeID": "15"
+      },
+      {
+        "nodeID": "29_166178046893607143",
+        "schemeID": "71"
+      },
+      {
+        "nodeID": "31_166178046893607143",
+        "schemeID": "71"
+      },
+      {
+        "nodeID": "33_166178046893607143",
+        "schemeID": "71"
+      },
+      {
+        "nodeID": "34_166178046893607143",
+        "schemeID": "0"
+      },
+      {
+        "nodeID": "36_166178046893607143",
+        "schemeID": "7"
+      },
+      {
+        "nodeID": "37_166178046893607143",
+        "schemeID": "0"
+      },
+      {
+        "nodeID": "39_166178046893607143",
+        "schemeID": "1"
+      }
+    ],
+    "participants": [
+      {
+        "participantID": 1,
+        "firstname": "Participant",
+        "surname": "Rachel"
+      },
+      {
+        "participantID": 2,
+        "firstname": "Participant",
+        "surname": "Carolyn"
+      },
+      {
+        "participantID": 3,
+        "firstname": "Participant",
+        "surname": "Mo"
+      },
+      {
+        "participantID": 4,
+        "firstname": "Participant",
+        "surname": "Zoe"
+      },
+      {
+        "participantID": 5,
+        "firstname": "Participant",
+        "surname": "Claire"
+      },
+      {
+        "participantID": 6,
+        "firstname": "Participant",
+        "surname": "Lee"
+      },
+      {
+        "participantID": 7,
+        "firstname": "Participant",
+        "surname": "Sally"
+      },
+      {
+        "participantID": 8,
+        "firstname": "Participant",
+        "surname": "Kalbir"
+      },
+      {
+        "participantID": 9,
+        "firstname": "Participant",
+        "surname": "Alice"
+      },
+      {
+        "participantID": 10,
+        "firstname": "Anne",
+        "surname": "Robinson"
+      },
+      {
+        "participantID": 11,
+        "firstname": "Diane",
+        "surname": "Munday"
+      },
+      {
+        "participantID": 12,
+        "firstname": "Neena",
+        "surname": "Modi"
+      },
+      {
+        "participantID": 13,
+        "firstname": "David",
+        "surname": "Steel"
+      },
+      {
+        "participantID": 14,
+        "firstname": "Neil",
+        "surname": "Lyndon"
+      }
+    ],
+    "locutions": [],
+    "descriptorfulfillments": [],
+    "cqdescriptorfulfillments": []
+  },
+  "text": "Dungeons and Dragons is essentially a feeding program for occultism and witchcraft. For Christians, the first scriptural problem is the fact that Dungeons and Dragons violates the commandment of I Ths. 5:22 \"Abstain from all appearance of evil.\" Much of the art, figurines, and writing within Dungeons and Dragons certainly appears evil to say the least of it. On top of that, the second issue is that the materials themselves contain magical rituals. From my own experience as a witch high priest (Alexandrian tradition) during the period 1973-84, I can tell you that, for the most part, the rituals are certainly authentic. If a person \"innocently\" works an authentic ritual that conjures up a demon, or curses someone, thinking that they are only playing a game, the ritual will still have efficacy. If you play at shooting your friend in the head with what you think is an unloaded pistol and don't know a shell is in the chamber, is your friend any less dead because you were playing? Of course, some people will say: \"It's just a game!\" But like the people who think they can play around with crack or pre-marital sex and not get burned by death, AIDS or pregnancy, the person who thinks they can mess with Dungeons and Dragons without getting burnt is whistling in the dark. Thus, in my mind, there is no doubt that Dungeons and Dragons and its imitators are right out of the pit of hell. No Christian or sane, decent individual of whatever faith really should have anything to do with them.",
+  "OVA": {
+    "firstname": "Jacky",
+    "surname": "Visser",
+    "url": "",
+    "nodes": [
+      {
+        "nodeID": "2_166178046893607143",
+        "visible": true,
+        "x": 192,
+        "y": 175,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "3_166178046893607143",
+        "visible": true,
+        "x": 190,
+        "y": 7,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "5_166178046893607143",
+        "visible": true,
+        "x": 235,
+        "y": 132,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "6_166178046893607143",
+        "visible": true,
+        "x": 614,
+        "y": 200,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "7_166178046893607143",
+        "visible": true,
+        "x": 581,
+        "y": 311,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "8_166178046893607143",
+        "visible": true,
+        "x": 582,
+        "y": 479,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "10_166178046893607143",
+        "visible": true,
+        "x": 638,
+        "y": 422,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "12_166178046893607143",
+        "visible": true,
+        "x": 617,
+        "y": 257,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "13_166178046893607143",
+        "visible": true,
+        "x": 192,
+        "y": 311,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "15_166178046893607143",
+        "visible": true,
+        "x": 234,
+        "y": 264,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "16_166178046893607143",
+        "visible": true,
+        "x": 84,
+        "y": 465,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "18_166178046893607143",
+        "visible": true,
+        "x": 210,
+        "y": 404,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "19_166178046893607143",
+        "visible": true,
+        "x": 84,
+        "y": 616,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "21_166178046893607143",
+        "visible": true,
+        "x": 161,
+        "y": 569,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "22_166178046893607143",
+        "visible": true,
+        "x": 321,
+        "y": 464,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "24_166178046893607143",
+        "visible": true,
+        "x": 332,
+        "y": 402,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "25_166178046893607143",
+        "visible": true,
+        "x": 325,
+        "y": 579,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "27_166178046893607143",
+        "visible": true,
+        "x": 367,
+        "y": 532,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "29_166178046893607143",
+        "visible": true,
+        "x": 425,
+        "y": 52,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "31_166178046893607143",
+        "visible": true,
+        "x": 423,
+        "y": 195,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "33_166178046893607143",
+        "visible": true,
+        "x": 421,
+        "y": 321,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "34_166178046893607143",
+        "visible": true,
+        "x": 327,
+        "y": 694,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "36_166178046893607143",
+        "visible": true,
+        "x": 363,
+        "y": 647,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "37_166178046893607143",
+        "visible": true,
+        "x": 327,
+        "y": 866,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "39_166178046893607143",
+        "visible": true,
+        "x": 392,
+        "y": 820,
+        "timestamp": ""
+      }
+    ],
+    "edges": [
+      {
+        "fromID": "2_166178046893607143",
+        "toID": "5_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "5_166178046893607143",
+        "toID": "3_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "8_166178046893607143",
+        "toID": "10_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "10_166178046893607143",
+        "toID": "7_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "7_166178046893607143",
+        "toID": "12_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "12_166178046893607143",
+        "toID": "6_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "13_166178046893607143",
+        "toID": "15_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "15_166178046893607143",
+        "toID": "2_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "16_166178046893607143",
+        "toID": "18_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "18_166178046893607143",
+        "toID": "13_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "19_166178046893607143",
+        "toID": "21_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "21_166178046893607143",
+        "toID": "16_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "22_166178046893607143",
+        "toID": "24_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "24_166178046893607143",
+        "toID": "13_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "25_166178046893607143",
+        "toID": "27_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "27_166178046893607143",
+        "toID": "22_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "6_166178046893607143",
+        "toID": "29_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "29_166178046893607143",
+        "toID": "3_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "6_166178046893607143",
+        "toID": "31_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "31_166178046893607143",
+        "toID": "2_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "6_166178046893607143",
+        "toID": "33_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "33_166178046893607143",
+        "toID": "13_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "34_166178046893607143",
+        "toID": "36_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "36_166178046893607143",
+        "toID": "25_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "37_166178046893607143",
+        "toID": "39_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "39_166178046893607143",
+        "toID": "34_166178046893607143",
+        "visible": true
+      }
+    ]
+  },
+  "propositionClassifier": {
+    "nodes": [
+      {
+        "nodeID": "2_166178046893607143",
+        "propType": "value"
+      },
+      {
+        "nodeID": "3_166178046893607143",
+        "propType": "policy"
+      },
+      {
+        "nodeID": "6_166178046893607143",
+        "propType": "fact"
+      },
+      {
+        "nodeID": "7_166178046893607143",
+        "propType": "value"
+      },
+      {
+        "nodeID": "8_166178046893607143",
+        "propType": "value"
+      },
+      {
+        "nodeID": "13_166178046893607143",
+        "propType": "fact"
+      },
+      {
+        "nodeID": "16_166178046893607143",
+        "propType": "value"
+      },
+      {
+        "nodeID": "19_166178046893607143",
+        "propType": "value"
+      },
+      {
+        "nodeID": "22_166178046893607143",
+        "propType": "fact"
+      },
+      {
+        "nodeID": "25_166178046893607143",
+        "propType": "fact"
+      },
+      {
+        "nodeID": "34_166178046893607143",
+        "propType": "fact"
+      },
+      {
+        "nodeID": "37_166178046893607143",
+        "propType": "fact"
+      }
+    ]
+  },
+  "Skeptic": {
+    "questions": [
+      {
+        "rank": 1,
+        "nodeID": "3_166178046893607143",
+        "question": "Is this statement consistent with previous proposals?"
+      },
+      {
+        "rank": 2,
+        "nodeID": "3_166178046893607143",
+        "question": "Is this policy appropriate for this objective?"
+      },
+      {
+        "rank": 3,
+        "nodeID": "5_166178046893607143",
+        "question": "How strong is the probability or plausibility that these cited consequences will (may, might, must) occur?"
+      },
+      {
+        "rank": 4,
+        "nodeID": "5_166178046893607143",
+        "question": "What evidence, if any, supported the claim that these consequences will (may, might, must) occur if the action is brought about?"
+      },
+      {
+        "rank": 5,
+        "nodeID": "5_166178046893607143",
+        "question": "Are there consequences of the opposite value that ought to be taken into account?"
+      },
+      {
+        "rank": 6,
+        "nodeID": "2_166178046893607143",
+        "question": "Does this statement reflect a popularly held value?"
+      },
+      {
+        "rank": 7,
+        "nodeID": "15_166178046893607143",
+        "question": "What evidence is there that this thing definitely has the property, as opposed to evidence indicating room for doubt on whether it should be so classified?"
+      },
+      {
+        "rank": 8,
+        "nodeID": "15_166178046893607143",
+        "question": "Is the verbal classification in the classification premise based merely on a stipulative or biased definition that is subject to doubt?"
+      },
+      {
+        "rank": 9,
+        "nodeID": "13_166178046893607143",
+        "question": "Is this statement actually true?"
+      },
+      {
+        "rank": 10,
+        "nodeID": "18_166178046893607143",
+        "question": "What is the strength of the correlation of the sign with the event signified?"
+      },
+      {
+        "rank": 11,
+        "nodeID": "18_166178046893607143",
+        "question": "Are there other events that would more reliably account for the sign?"
+      },
+      {
+        "rank": 12,
+        "nodeID": "24_166178046893607143",
+        "question": "What is the strength of the correlation of the sign with the event signified?"
+      },
+      {
+        "rank": 13,
+        "nodeID": "24_166178046893607143",
+        "question": "Are there other events that would more reliably account for the sign?"
+      },
+      {
+        "rank": 14,
+        "nodeID": "22_166178046893607143",
+        "question": "Is this statement actually true?"
+      },
+      {
+        "rank": 15,
+        "nodeID": "27_166178046893607143",
+        "question": "How credible is the source as an expert?"
+      },
+      {
+        "rank": 16,
+        "nodeID": "27_166178046893607143",
+        "question": "Is the source an expert in a relevant field?"
+      },
+      {
+        "rank": 17,
+        "nodeID": "27_166178046893607143",
+        "question": "What did the source assert that implies this claim?"
+      },
+      {
+        "rank": 18,
+        "nodeID": "27_166178046893607143",
+        "question": "Is the source personally reliable?"
+      },
+      {
+        "rank": 19,
+        "nodeID": "27_166178046893607143",
+        "question": "Is the claim consistent with what other experts assert?"
+      },
+      {
+        "rank": 20,
+        "nodeID": "27_166178046893607143",
+        "question": "Is the source’s assertion based on evidence?"
+      },
+      {
+        "rank": 21,
+        "nodeID": "6_166178046893607143",
+        "question": "Is this statement actually true?"
+      },
+      {
+        "rank": 22,
+        "nodeID": "6_166178046893607143",
+        "question": "Could there be any reasons for accepting this proposition?"
+      },
+      {
+        "rank": 23,
+        "nodeID": "6_166178046893607143",
+        "question": "Is there any argument in support of this claim?"
+      },
+      {
+        "rank": 24,
+        "nodeID": "25_166178046893607143",
+        "question": "Is this statement actually true?"
+      },
+      {
+        "rank": 25,
+        "nodeID": "36_166178046893607143",
+        "question": "Is there really a correlation between the two states of affairs?"
+      },
+      {
+        "rank": 26,
+        "nodeID": "36_166178046893607143",
+        "question": "Is there any reason to think that the correlation is any more than a coincidence?"
+      },
+      {
+        "rank": 27,
+        "nodeID": "36_166178046893607143",
+        "question": "Could there be some third factor that is causing both states of affairs?"
+      },
+      {
+        "rank": 28,
+        "nodeID": "7_166178046893607143",
+        "question": "Does this statement reflect a popularly held value?"
+      },
+      {
+        "rank": 29,
+        "nodeID": "10_166178046893607143",
+        "question": "Are there differences between the compared cases that would tend to undermine the force of the similarity cited?"
+      },
+      {
+        "rank": 30,
+        "nodeID": "10_166178046893607143",
+        "question": "Is the property true or false in the first compared case?"
+      },
+      {
+        "rank": 31,
+        "nodeID": "10_166178046893607143",
+        "question": "Is there some other comparable case that is also similar to the first case, but in which the property is not true (false)?"
+      },
+      {
+        "rank": 32,
+        "nodeID": "16_166178046893607143",
+        "question": "Does this statement reflect a popularly held value?"
+      },
+      {
+        "rank": 33,
+        "nodeID": "21_166178046893607143",
+        "question": "What is the strength of the correlation of the sign with the event signified?"
+      },
+      {
+        "rank": 34,
+        "nodeID": "21_166178046893607143",
+        "question": "Are there other events that would more reliably account for the sign?"
+      },
+      {
+        "rank": 35,
+        "nodeID": "34_166178046893607143",
+        "question": "Is this statement actually true?"
+      },
+      {
+        "rank": 36,
+        "nodeID": "39_166178046893607143",
+        "question": "Are there differences between the compared cases that would tend to undermine the force of the similarity cited?"
+      },
+      {
+        "rank": 37,
+        "nodeID": "39_166178046893607143",
+        "question": "Is the property true or false in the first compared case?"
+      },
+      {
+        "rank": 38,
+        "nodeID": "39_166178046893607143",
+        "question": "Is there some other comparable case that is also similar to the first case, but in which the property is not true (false)?"
+      },
+      {
+        "rank": 39,
+        "nodeID": "8_166178046893607143",
+        "question": "Does this statement reflect a popularly held value?"
+      },
+      {
+        "rank": 40,
+        "nodeID": "19_166178046893607143",
+        "question": "Does this statement reflect a popularly held value?"
+      },
+      {
+        "rank": 41,
+        "nodeID": "37_166178046893607143",
+        "question": "Is this statement actually true?"
+      }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+version: '1'
+
+services:
+ amf_ari:
+  container_name: amf_ari
+  build: .
+  ports:
+  - "8000:5000"
