@@ -19,7 +19,7 @@ def preprocess_data(filexaif):
             propositions[node['nodeID']] = node['text']
             idents.append(node['nodeID'])
 
-    for p in itertools.permutations(idents, 2):
+    for p in itertools.combinations(idents, 2):
         idents_comb.append(p)
         data['text'].append(propositions[p[0]])
         data['text2'].append(propositions[p[1]])
@@ -118,6 +118,6 @@ if __name__ == "__main__":
     content = json.load(ff)
     print(content)
     out = relation_identification(content)
-    with open("../data2.json", "w") as outfile:
-        json.dump(out, outfile)
+    with open("../data_out.json", "w") as outfile:
+        json.dump(out, outfile, indent=4)
 

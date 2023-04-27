@@ -4,7 +4,7 @@ import json
 from app.ari import relation_identification
 
 
-@application.route('/amf_ari', methods=['GET', 'POST'])
+@application.route('/', methods=['GET', 'POST'])
 def amf_schemes():
     if request.method == 'POST':
         f = request.files['file']
@@ -15,6 +15,7 @@ def amf_schemes():
         response = relation_identification(content)
         print(response)
         return jsonify(response)
-        
+    elif request.method == 'GET':
+        return render_template('docs.html')
  
  
