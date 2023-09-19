@@ -12,7 +12,11 @@ def amf_schemes():
         ff = open(f.filename, 'r')
         content = json.load(ff)
         # Predict existing relations in content (i.e., xaif file) "I" nodes.
-        response = relation_identification(content)
+        window_size = request.args.get('window_size')
+        if window_size is None:
+            response = relation_identification(content, window_size=-1)
+        else:
+            response = relation_identification(content, window_size=window_size)
         print(response)
         return jsonify(response)
     elif request.method == 'GET':

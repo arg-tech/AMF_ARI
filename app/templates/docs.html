@@ -6,6 +6,12 @@
 
 <h3> Functionality: Predict AIT argumentative relations between pairs of propositional argumentative nodes (I). The predicted relations are: Inference (RA), Conflict (CA), Rephrase (MA), and None.</h3>
 
+<h3> <b>Optional Parameters:</b> </h3>
+
+<p> - Window Size: Indicate the window size to detect argumentative relations, a smaller window size will result in faster computation but may miss existing relations between propositions separated in the dialogue. If no parameter is given, the entire set of proposition pairs will be analysed. The parameter can be passed through the use of the keyword "window_size" in the query.</p>
+
+<p>  Use examples: For a complete analysis: http://amfws-ari.arg.tech/; For an analysis considering the two next propositions only: http://amfws-ari.arg.tech/?window_size=3. </p>
+
 <p> <b>Expected Input:</b> xAIF file containing the segmented and pre-processed propositional argumentative nodes (I). </p>
 
 <p> <b>Expected Output:</b> xAIF file with the complete propositional argument graph. For each predicted argumentative relation, a new node (RA, CA, or MA), and two edges (from I<sub>1</sub> to new node, from new node to I<sub>2</sub>) are added to the input xAIF file.</p>

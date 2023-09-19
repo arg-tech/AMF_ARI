@@ -1,5 +1,5 @@
 import itertools
-from datasets import Dataset, DatasetDict
+from datasets import Dataset
 from transformers import Trainer, AutoTokenizer, AutoModelForSequenceClassification
 import numpy as np
 import json
@@ -8,7 +8,7 @@ TOKENIZER = AutoTokenizer.from_pretrained("raruidol/ArgumentMining-EN-ARI-AIF-Ro
 MODEL = AutoModelForSequenceClassification.from_pretrained("raruidol/ArgumentMining-EN-ARI-AIF-RoBERTa_L")
 
 
-def preprocess_data(filexaif):
+def preprocess_data(filexaif, wnd_size):
     idents = []
     idents_comb = []
     propositions = {}
@@ -19,10 +19,32 @@ def preprocess_data(filexaif):
             propositions[node['nodeID']] = node['text']
             idents.append(node['nodeID'])
 
-    for p in itertools.combinations(idents, 2):
-        idents_comb.append(p)
-        data['text'].append(propositions[p[0]])
-        data['text2'].append(propositions[p[1]])
+    if wnd_size == -1:
+        window_size = len(idents)
+    else:
+        window_size = wnd_size
+    for i in range(len(idents) - window_size + 1):
+        context = idents[i: i + window_size]
+
+        if window_size == 2:
+            for p in itertools.combinations(context, 2):
+                idents_comb.append(p)
+                data['text'].append(propositions[p[0]])
+                data['text2'].append(propositions[p[1]])
+
+        else:
+            if i == 0:
+                c = 1
+            else:
+                c = 0
+            for p in itertools.combinations(context, 2):
+                if c == 0:
+                    pass
+                else:
+                    idents_comb.append(p)
+                    data['text'].append(propositions[p[0]])
+                    data['text2'].append(propositions[p[1]])
+                c += 1
 
     final_data = Dataset.from_dict(data)
 
@@ -91,11 +113,11 @@ def output_xaif(idents, labels, fileaif):
     return fileaif
 
 
-def relation_identification(xaif):
+def relation_identification(xaif, window_size):
 
     # Generate a HF Dataset from all the "I" node pairs to make predictions from the xAIF file 
     # and a list of tuples with the corresponding "I" node ids to generate the final xaif file.
-    dataset, ids, props = preprocess_data(xaif['AIF'])
+    dataset, ids, props = preprocess_data(xaif['AIF'], window_size)
 
     # Tokenize the Dataset.
     tokenized_data = dataset.map(tokenize_sequence, batched=True)
@@ -117,7 +139,7 @@ if __name__ == "__main__":
     ff = open('../data.json', 'r')
     content = json.load(ff)
     print(content)
-    out = relation_identification(content)
+    out = relation_identification(content, 3)
     with open("../data_out.json", "w") as outfile:
         json.dump(out, outfile, indent=4)
 
