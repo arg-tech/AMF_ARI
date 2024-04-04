@@ -5,7 +5,7 @@ from app.ari import relation_identification
 
 
 @application.route('/', methods=['GET', 'POST'])
-def amf_schemes():
+def amf_ari():
     if request.method == 'POST':
         f = request.files['file']
         f.save(f.filename)
