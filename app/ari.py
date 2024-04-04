@@ -3,6 +3,9 @@ from datasets import Dataset
 from transformers import Trainer, AutoTokenizer, AutoModelForSequenceClassification
 import numpy as np
 import json
+import torch
+from torch.nn import functional as F
+
 
 TOKENIZER = AutoTokenizer.from_pretrained("raruidol/ArgumentMining-EN-ARI-AIF-RoBERTa_L")
 MODEL = AutoModelForSequenceClassification.from_pretrained("raruidol/ArgumentMining-EN-ARI-AIF-RoBERTa_L")
@@ -57,9 +60,24 @@ def tokenize_sequence(samples):
 
 def make_predictions(trainer, tknz_data):
     predicted_logprobs = trainer.predict(tknz_data)
-    predicted_labels = np.argmax(predicted_logprobs.predictions, axis=-1)
+    '''
+        predicted_labels = np.argmax(predicted_logprobs.predictions, axis=-1)
 
-    return predicted_labels
+        return predicted_labels
+    '''
+    labels = []
+    for sample in predicted_logprobs.predictions:
+        torch_logits = torch.from_numpy(sample)
+        probabilities = F.softmax(torch_logits, dim=-1).numpy()
+        valid_check = probabilities > 0.95
+        if True in valid_check:
+            labels.append(np.argmax(sample, axis=-1))
+        elif np.argmax(sample, axis=-1) == 2 and probabilities[2] > 0.8:
+            labels.append(2)
+        else:
+            labels.append(-1)
+
+    return labels
 
 
 def output_xaif(idents, labels, fileaif):
@@ -73,40 +91,40 @@ def output_xaif(idents, labels, fileaif):
 
         elif lb == 1:
             # Add the RA node
-            fileaif["AIF"]["nodes"].append({"nodeID": newnodeId, "text": "Default Inference", "type": "RA", "timestamp": "", "scheme": "Default Inference", "schemeID": "72"})
+            fileaif["AIF"]["nodes"].append({"nodeID": str(newnodeId), "text": "Default Inference", "type": "RA", "timestamp": "", "scheme": "Default Inference", "schemeID": "72"})
 
             # Add the edges from ident[0] to RA and from RA to ident[1]
             sc = idents[i][0]
             ds = idents[i][1]
-            fileaif["AIF"]["edges"].append({"edgeID": newedgeId, "fromID": sc, "toID": newnodeId})
+            fileaif["AIF"]["edges"].append({"edgeID": str(newedgeId), "fromID": sc, "toID": str(newnodeId)})
             newedgeId += 1
-            fileaif["AIF"]["edges"].append({"edgeID": newedgeId, "fromID": newnodeId, "toID": ds})
+            fileaif["AIF"]["edges"].append({"edgeID": str(newedgeId), "fromID": str(newnodeId), "toID": ds})
             newedgeId += 1
             newnodeId += 1
 
         elif lb == 2:
             # Add the CA node
-            fileaif["AIF"]["nodes"].append({"nodeID": newnodeId, "text": "Default Conflict", "type": "CA", "timestamp": "", "scheme": "Default Conflict", 'schemeID': "71"})
+            fileaif["AIF"]["nodes"].append({"nodeID": str(newnodeId), "text": "Default Conflict", "type": "CA", "timestamp": "", "scheme": "Default Conflict", 'schemeID': "71"})
 
             # Add the edges from ident[0] to MA and from MA to ident[1]
             sc = idents[i][0]
             ds = idents[i][1]
-            fileaif["AIF"]["edges"].append({"edgeID": newedgeId, "fromID": sc, "toID": newnodeId})
+            fileaif["AIF"]["edges"].append({"edgeID": str(newedgeId), "fromID": sc, "toID": str(newnodeId)})
             newedgeId += 1
-            fileaif["AIF"]["edges"].append({"edgeID": newedgeId, "fromID": newnodeId, "toID": ds})
+            fileaif["AIF"]["edges"].append({"edgeID": str(newedgeId), "fromID": str(newnodeId), "toID": ds})
             newedgeId += 1
             newnodeId += 1
 
         elif lb == 3:
             # Add the MA node
-            fileaif["AIF"]["nodes"].append({"nodeID": newnodeId, "text": "Default Rephrase", "type": "MA", "timestamp": "", 'scheme': "Default Rephrase", 'schemeID': "144"})
+            fileaif["AIF"]["nodes"].append({"nodeID": str(newnodeId), "text": "Default Rephrase", "type": "MA", "timestamp": "", 'scheme': "Default Rephrase", 'schemeID': "144"})
 
             # Add the edges from ident[0] to MA and from MA to ident[1]
             sc = idents[i][0]
             ds = idents[i][1]
-            fileaif["AIF"]["edges"].append({"edgeID": newedgeId, "fromID": sc, "toID": newnodeId})
+            fileaif["AIF"]["edges"].append({"edgeID": str(newedgeId), "fromID": sc, "toID": str(newnodeId)})
             newedgeId += 1
-            fileaif["AIF"]["edges"].append({"edgeID": newedgeId, "fromID": newnodeId, "toID": ds})
+            fileaif["AIF"]["edges"].append({"edgeID": str(newedgeId), "fromID": str(newnodeId), "toID": ds})
             newedgeId += 1
             newnodeId += 1
 
@@ -138,8 +156,8 @@ def relation_identification(xaif, window_size):
 if __name__ == "__main__":
     ff = open('../data.json', 'r')
     content = json.load(ff)
-    print(content)
-    out = relation_identification(content, 3)
+    #print(content)
+    out = relation_identification(content, -1)
     with open("../data_out.json", "w") as outfile:
         json.dump(out, outfile, indent=4)
 
