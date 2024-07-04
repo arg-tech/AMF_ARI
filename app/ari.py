@@ -1,14 +1,19 @@
 import itertools
 from datasets import Dataset
-from transformers import Trainer, AutoTokenizer, AutoModelForSequenceClassification
+from transformers import Trainer, AutoTokenizer, AutoModelForSequenceClassification, pipeline
 import numpy as np
 import json
 import torch
 from torch.nn import functional as F
+from amf_fast_inference import model
+from xaif_eval import xaif
 
 
 TOKENIZER = AutoTokenizer.from_pretrained("raruidol/ArgumentMining-EN-ARI-AIF-RoBERTa_L")
-MODEL = AutoModelForSequenceClassification.from_pretrained("raruidol/ArgumentMining-EN-ARI-AIF-RoBERTa_L")
+# MODEL = AutoModelForSequenceClassification.from_pretrained("raruidol/ArgumentMining-EN-ARI-AIF-RoBERTa_L")
+MODEL_ID = "raruidol/ArgumentMining-EN-ARI-AIF-RoBERTa_L"
+LOADER = model.ModelLoader(MODEL_ID)
+PRUNED_MODEL = LOADER.load_model()
 
 
 def preprocess_data(filexaif, wnd_size):
@@ -58,6 +63,27 @@ def tokenize_sequence(samples):
     return TOKENIZER(samples["text"], samples["text2"], padding="max_length", truncation=True)
 
 
+def pipeline_predictions(pipeline, data):
+    labels = []
+    pipeline_input = []
+    for i in range(len(data['text'])):
+        sample = data['text'][i]+'. '+data['text2'][i]
+        pipeline_input.append(sample)
+
+    outputs = pipeline(pipeline_input)
+    for out in outputs:
+        if out['label'] == 'Inference' and out['score'] > 0.95:
+            labels.append(1)
+        elif out['label'] == 'Conflict' and out['score'] > 0.8:
+            labels.append(2)
+        elif out['label'] == 'Rephrase' and out['score'] > 0.8:
+            labels.append(3)
+        else:
+            labels.append(0)
+
+    return labels
+
+
 def make_predictions(trainer, tknz_data):
     predicted_logprobs = trainer.predict(tknz_data)
     '''
@@ -81,8 +107,8 @@ def make_predictions(trainer, tknz_data):
 
 
 def output_xaif(idents, labels, fileaif):
-    newnodeId = 90000
-    newedgeId = 80000
+    original_aif = xaif.AIF(fileaif)
+
     for i in range(len(labels)):
         lb = labels[i]
 
@@ -91,44 +117,17 @@ def output_xaif(idents, labels, fileaif):
 
         elif lb == 1:
             # Add the RA node
-            fileaif["AIF"]["nodes"].append({"nodeID": str(newnodeId), "text": "Default Inference", "type": "RA", "timestamp": "", "scheme": "Default Inference", "schemeID": "72"})
-
-            # Add the edges from ident[0] to RA and from RA to ident[1]
-            sc = idents[i][0]
-            ds = idents[i][1]
-            fileaif["AIF"]["edges"].append({"edgeID": str(newedgeId), "fromID": sc, "toID": str(newnodeId)})
-            newedgeId += 1
-            fileaif["AIF"]["edges"].append({"edgeID": str(newedgeId), "fromID": str(newnodeId), "toID": ds})
-            newedgeId += 1
-            newnodeId += 1
+            original_aif.add_component("argument_relation", "RA", idents[i][1], idents[i][0])
 
         elif lb == 2:
             # Add the CA node
-            fileaif["AIF"]["nodes"].append({"nodeID": str(newnodeId), "text": "Default Conflict", "type": "CA", "timestamp": "", "scheme": "Default Conflict", 'schemeID': "71"})
-
-            # Add the edges from ident[0] to MA and from MA to ident[1]
-            sc = idents[i][0]
-            ds = idents[i][1]
-            fileaif["AIF"]["edges"].append({"edgeID": str(newedgeId), "fromID": sc, "toID": str(newnodeId)})
-            newedgeId += 1
-            fileaif["AIF"]["edges"].append({"edgeID": str(newedgeId), "fromID": str(newnodeId), "toID": ds})
-            newedgeId += 1
-            newnodeId += 1
+            original_aif.add_component("argument_relation", "CA", idents[i][1], idents[i][0])
 
         elif lb == 3:
             # Add the MA node
-            fileaif["AIF"]["nodes"].append({"nodeID": str(newnodeId), "text": "Default Rephrase", "type": "MA", "timestamp": "", 'scheme': "Default Rephrase", 'schemeID': "144"})
+            original_aif.add_component("argument_relation", "MA", idents[i][1], idents[i][0])
 
-            # Add the edges from ident[0] to MA and from MA to ident[1]
-            sc = idents[i][0]
-            ds = idents[i][1]
-            fileaif["AIF"]["edges"].append({"edgeID": str(newedgeId), "fromID": sc, "toID": str(newnodeId)})
-            newedgeId += 1
-            fileaif["AIF"]["edges"].append({"edgeID": str(newedgeId), "fromID": str(newnodeId), "toID": ds})
-            newedgeId += 1
-            newnodeId += 1
-
-    return fileaif
+    return original_aif.xaif
 
 
 def relation_identification(xaif, window_size):
@@ -137,14 +136,11 @@ def relation_identification(xaif, window_size):
     # and a list of tuples with the corresponding "I" node ids to generate the final xaif file.
     dataset, ids, props = preprocess_data(xaif['AIF'], window_size)
 
-    # Tokenize the Dataset.
-    tokenized_data = dataset.map(tokenize_sequence, batched=True)
-
-    # Instantiate HF Trainer for predicting.
-    trainer = Trainer(MODEL)
+    # Inference Pipeline
+    pl = pipeline("text-classification", model=PRUNED_MODEL, tokenizer=TOKENIZER)
 
     # Predict the list of labels for all the pairs of "I" nodes.
-    labels = make_predictions(trainer, tokenized_data)
+    labels = pipeline_predictions(pl, dataset)
 
     # Prepare the xAIF output file.
     out_xaif = output_xaif(ids, labels, xaif)
@@ -156,8 +152,8 @@ def relation_identification(xaif, window_size):
 if __name__ == "__main__":
     ff = open('../data.json', 'r')
     content = json.load(ff)
-    #print(content)
+    # print(content)
     out = relation_identification(content, -1)
-    with open("../data_out.json", "w") as outfile:
+    with open("../data_out3.json", "w") as outfile:
         json.dump(out, outfile, indent=4)
 
