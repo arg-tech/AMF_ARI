@@ -17,5 +17,5 @@ RUN chmod +x boot.sh
 ENV FLASK_APP app
 
 
-EXPOSE 5000
+EXPOSE 2348
 ENTRYPOINT ["./boot.sh"]
