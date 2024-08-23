@@ -19,4 +19,4 @@ jobs:
       # Define a URL for your app, without the http:// or www prefixes
       full_app_url: amf-ari.amfws.arg.tech
       # The port that is exposed on localhost (must be the same as in docker-compose.yml)
-      app_port: 2348
+      app_port: 5001
