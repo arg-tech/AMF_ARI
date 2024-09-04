@@ -4,5 +4,5 @@ numpy
 transformers
 torch
 datasets
-amf-fast-inference
+amf-fast-inference==0.0.3
 xaif_eval
