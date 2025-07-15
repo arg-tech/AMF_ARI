@@ -72,36 +72,14 @@ def pipeline_predictions(pipeline, data):
 
     outputs = pipeline(pipeline_input)
     for out in outputs:
-        if out['label'] == 'Inference' and out['score'] > 0.95:
+        if out['label'] == 'Inference' and out['score'] > 0.9:
             labels.append(1)
-        elif out['label'] == 'Conflict' and out['score'] > 0.8:
+        elif out['label'] == 'Conflict' and out['score'] > 0.7:
             labels.append(2)
-        elif out['label'] == 'Rephrase' and out['score'] > 0.8:
+        elif out['label'] == 'Rephrase' and out['score'] > 0.7:
             labels.append(3)
         else:
             labels.append(0)
-
-    return labels
-
-
-def make_predictions(trainer, tknz_data):
-    predicted_logprobs = trainer.predict(tknz_data)
-    '''
-        predicted_labels = np.argmax(predicted_logprobs.predictions, axis=-1)
-
-        return predicted_labels
-    '''
-    labels = []
-    for sample in predicted_logprobs.predictions:
-        torch_logits = torch.from_numpy(sample)
-        probabilities = F.softmax(torch_logits, dim=-1).numpy()
-        valid_check = probabilities > 0.95
-        if True in valid_check:
-            labels.append(np.argmax(sample, axis=-1))
-        elif np.argmax(sample, axis=-1) == 2 and probabilities[2] > 0.8:
-            labels.append(2)
-        else:
-            labels.append(-1)
 
     return labels
 
