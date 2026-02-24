@@ -1,0 +1,22 @@
+{
+  "AIF": {
+    "nodes": [
+      {
+        "nodeID": "1",
+        "text": "Dungeons and Dragons and its imitators are right out of the pit of hell",
+        "type": "I"
+      },
+      {
+        "nodeID": "2",
+        "text": "No Christian or sane, decent individual of whatever faith really should have anything to do with Dungeons and Dragons and its imitators",
+        "type": "I"
+      }
+    ],
+    "edges": [],
+    "schemefulfillments": [],
+    "participants": [],
+    "locutions": [],
+    "descriptorfulfillments": [],
+    "cqdescriptorfulfillments": []
+  }
+}
