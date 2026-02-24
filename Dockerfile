@@ -1,21 +1,12 @@
-FROM python:3.11
+FROM python:3.12-slim@sha256:9e01bf1ae5db7649a236da7be1e94ffbbbdd7a93f867dd0d8d5720d9e1f89fab
 
-RUN mkdir -p /home/amf_ari
-WORKDIR /home/amf_ari
+WORKDIR /app
+COPY requirements.txt .
 
-RUN pip install --upgrade pip
-
-ADD requirements.txt .
-RUN pip install -r requirements.txt
-RUN pip install gunicorn
-
-ADD app app
-ADD boot.sh ./
-RUN chmod +x boot.sh
-
-
-ENV FLASK_APP app
-
+RUN grep -v amf.fast.inference requirements.txt > /tmp/reqs.txt && \
+    pip install -r /tmp/reqs.txt && \
+    pip install --no-deps amf-fast-inference==0.0.3
+COPY . .
 
 EXPOSE 5001
-ENTRYPOINT ["./boot.sh"]
+CMD ["gunicorn", "--workers", "1", "--bind", "0.0.0.0:5001", "--timeout", "300", "--access-logfile", "-", "--error-logfile", "-", "app:application"]
