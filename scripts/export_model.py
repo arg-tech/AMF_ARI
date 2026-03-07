@@ -57,7 +57,7 @@ def push(output_dir: Path, repo_id: str) -> None:
 
     logger.info("Pushing model to Hub repo: %s", repo_id)
     ov_model = OVModelForSequenceClassification.from_pretrained(output_dir, export=False, compile=False)
-    ov_model.push_to_hub(str(output_dir), repository_id=repo_id, use_auth_token=True)
+    ov_model.push_to_hub(str(output_dir), repository_id=repo_id)
 
     tokenizer = AutoTokenizer.from_pretrained(output_dir)
     tokenizer.push_to_hub(repo_id)
