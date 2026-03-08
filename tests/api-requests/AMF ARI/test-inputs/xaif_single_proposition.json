@@ -1,0 +1,17 @@
+{
+  "AIF": {
+    "nodes": [
+      {
+        "nodeID": "1",
+        "text": "Climate change is the greatest threat facing humanity today",
+        "type": "I"
+      }
+    ],
+    "edges": [],
+    "schemefulfillments": [],
+    "participants": [],
+    "locutions": [],
+    "descriptorfulfillments": [],
+    "cqdescriptorfulfillments": []
+  }
+}

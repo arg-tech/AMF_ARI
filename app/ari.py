@@ -1,19 +1,55 @@
 import itertools
-from datasets import Dataset
-from transformers import Trainer, AutoTokenizer, AutoModelForSequenceClassification, pipeline
-import numpy as np
 import json
-import torch
-from torch.nn import functional as F
-from amf_fast_inference import model
+import logging
+from pathlib import Path
+
+from datasets import Dataset
+from transformers import AutoTokenizer, pipeline
+import numpy as np
+from optimum.intel import OVModelForSequenceClassification, OVWeightQuantizationConfig
 from xaif_eval import xaif
 
+logger = logging.getLogger(__name__)
 
-TOKENIZER = AutoTokenizer.from_pretrained("raruidol/ArgumentMining-EN-ARI-AIF-RoBERTa_L")
-# MODEL = AutoModelForSequenceClassification.from_pretrained("raruidol/ArgumentMining-EN-ARI-AIF-RoBERTa_L")
 MODEL_ID = "raruidol/ArgumentMining-EN-ARI-AIF-RoBERTa_L"
-LOADER = model.ModelLoader(MODEL_ID)
-PRUNED_MODEL = LOADER.load_model()
+
+
+def _load_config():
+    config_path = Path(__file__).parent.parent / "config" / "config.json"
+    if config_path.exists():
+        with config_path.open() as f:
+            return json.load(f)
+    return {"model_path": MODEL_ID, "ov_model_path": None}
+
+
+def _load_model():
+    config = _load_config()
+    model_path = config.get("model_path", MODEL_ID)
+    ov_model_path = config.get("ov_model_path")
+
+    if ov_model_path:
+        logger.info("Loading pre-exported OpenVINO model from: %s", ov_model_path)
+        tokenizer = AutoTokenizer.from_pretrained(ov_model_path)
+        ov_model = OVModelForSequenceClassification.from_pretrained(
+            ov_model_path, export=False, compile=True
+        )
+    else:
+        logger.warning(
+            "'ov_model_path' is not set in config/config.json. "
+            "Falling back to exporting from PyTorch at runtime (slow). "
+            "Run the export script and set 'ov_model_path' to avoid this."
+        )
+        tokenizer = AutoTokenizer.from_pretrained(model_path)
+        quantization_config = OVWeightQuantizationConfig(bits=8, ratio=1.0)
+        ov_model = OVModelForSequenceClassification.from_pretrained(
+            model_path, export=True, compile=True,
+            quantization_config=quantization_config,
+        )
+
+    return tokenizer, ov_model
+
+
+TOKENIZER, PRUNED_MODEL = _load_model()
 
 
 def preprocess_data(filexaif, wnd_size):

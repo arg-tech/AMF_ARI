@@ -16,7 +16,7 @@ def amf_ari():
         if window_size is None:
             response = relation_identification(content, window_size=-1)
         else:
-            response = relation_identification(content, window_size=window_size)
+            response = relation_identification(content, window_size=int(window_size))
         print(response)
         return jsonify(response)
     elif request.method == 'GET':

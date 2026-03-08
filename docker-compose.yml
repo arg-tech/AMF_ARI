@@ -1,8 +1,7 @@
-version: '3'
-
 services:
- amf_ari:
-  container_name: amf_ari
-  build: .
-  ports:
-  - "5001:5001"
+  amf_ari:
+    container_name: amf_ari
+    platform: linux/amd64
+    build: .
+    ports:
+      - "5001:5001"

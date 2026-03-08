@@ -7,11 +7,11 @@ ENV UV_LINK_MODE=copy \
 
 WORKDIR /app
 RUN --mount=type=cache,target=/root/.cache/uv \
-    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    --mount=type=bind,source=uv.lock,target=uv.lock \
+    --mount=type=bind,source=scripts/pyproject.toml,target=pyproject.toml \
+    --mount=type=bind,source=scripts/uv.lock,target=uv.lock \
     uv sync --frozen --no-install-project --no-dev
 
 COPY . .
 
-EXPOSE 5001
-CMD ["uv", "run", "gunicorn", "--workers", "1", "--bind", "0.0.0.0:5001", "--timeout", "300", "--access-logfile", "-", "--error-logfile", "-", "app:application"]
+ENV PYTHONUNBUFFERED=1
+CMD ["python", "scripts/export_model.py"]

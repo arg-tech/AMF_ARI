@@ -1,0 +1,52 @@
+meta {
+  name: Single Proposition
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/
+  body: multipartForm
+  auth: inherit
+}
+
+headers {
+  Content-Type: multipart/form-data
+}
+
+body:multipart-form {
+  file: @file(test-inputs/xaif_single_proposition.json)
+}
+
+tests {
+  test("Response status should be 200", function () {
+    expect(res.status).to.equal(200);
+  });
+
+  test("Response should be valid xAIF JSON", function () {
+    const data = res.getBody();
+    expect(data).to.have.property("AIF");
+    expect(data.AIF).to.have.property("nodes");
+    expect(data.AIF).to.have.property("edges");
+  });
+
+  test("Single I-node should be preserved", function () {
+    const data = res.getBody();
+    const iNodes = data.AIF.nodes.filter(n => n.type === "I");
+    expect(iNodes.length).to.equal(1);
+    expect(iNodes[0].text).to.equal("Climate change is the greatest threat facing humanity today");
+  });
+
+  test("No relation nodes should be added with only one proposition", function () {
+    const data = res.getBody();
+    const relationNodes = data.AIF.nodes.filter(n =>
+      n.type === "RA" || n.type === "CA" || n.type === "MA"
+    );
+    expect(relationNodes.length).to.equal(0);
+  });
+
+  test("No edges should be added", function () {
+    const data = res.getBody();
+    expect(data.AIF.edges.length).to.equal(0);
+  });
+}
